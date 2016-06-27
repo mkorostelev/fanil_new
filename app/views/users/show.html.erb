@@ -1,0 +1,23 @@
+<div class="depot_form">
+
+<%= form_for(@user) do |f| %>
+
+  <fieldset>
+    <legend>User Details</legend>
+
+    <div class="field">
+      <%= f.label :name, 'Name:' %>
+      <%= f.text_field :name, size: 40, :disabled=>true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email, :disabled=>true %>
+    </div>
+
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+
+  </fieldset>
+<% end %>
+</div>

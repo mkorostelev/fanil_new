@@ -1,0 +1,15 @@
+<%= bootstrap_form_for(route_point) do |f| %>
+
+    <%= f.text_field :title, help: "Must be at least 10 characters long" %>
+
+    <%= f.number_field :number, label: "Number in route" %>
+
+    <%= f.text_area :description, rows: 6 %>
+
+    <%= f.collection_select(:route_id, Route.all, :id, :title, prompt: 'Select a route') %>
+
+    <%= f.collection_select(:performer_id, User.all, :id, :name, prompt: 'Select a performer') %>
+
+    <%= f.submit %>
+
+<% end %>

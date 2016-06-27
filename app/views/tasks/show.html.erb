@@ -1,0 +1,41 @@
+<%= bootstrap_form_for(@task) do |f| %>
+
+  <div class="field">
+    <%= f.collection_select(:business_process_id, BusinessProcess.where(id: @task.business_process_id), :id, :description, :disabled=>true) %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select(:route_id, Route.where(id: @task.route_id), :id, :title, :disabled=>true) %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select(:route_point_id, RoutePoint.where(id: @task.route_point_id), :id, :description, :disabled=>true) %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select(:performer_id, User.where(id: @task.performer_id), :id, :name, :disabled=>true) %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select(:executor_id, User.where(id: @task.executor_id), :id, :name, prompt: 'Select an executer') %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :comment, rows: 6, :disabled=>true %>
+  </div>
+
+  <% if @task.id then %>
+    <div class="field">
+      <%= f.check_box :executed, :disabled=>true %>
+    </div>
+    <% if @task.executed %>
+      <div class="field">
+        <%= f.datetime_local_field :execution_date, :disabled=>true %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Edit', edit_task_path(@task) %> |
+  <%= link_to 'Back', tasks_path %>
+
+<% end %>

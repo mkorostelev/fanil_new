@@ -1,0 +1,28 @@
+<%= bootstrap_form_for(business_process) do |f| %>
+
+
+    <%= f.text_area :description, rows: 6 %>
+
+    <%= f.collection_select(:route_id, Route.all, :id, :title, prompt: 'Select a route') %>
+
+   
+  <% if business_process.id then %>
+      <%= f.check_box :executed %>
+
+      <%= f.datetime_local_field :execution_date %>
+  <% end %>
+
+
+    <%= f.collection_select(:file_id, Document.all, :id, :filename, prompt: 'Attach a file') %>
+    <% if business_process.file_id %>
+      <%= link_to 'Download', download_path(business_process.file_id), disable_with: 'Downloading...' %>
+    <% end %>
+
+    <% if User.find_by(id: session[:user_id]).admin? %>
+      <%= f.collection_select(:author_id, User.all, :id, :name, prompt: 'Select an author') %>
+    <% else %>
+      <%= f.collection_select(:author_id, User.where(id: session[:user_id]), :id, :name, prompt: 'Select an author') %>
+    <% end %>
+    <%= f.submit %>
+
+<% end %>

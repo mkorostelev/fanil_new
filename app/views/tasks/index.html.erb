@@ -1,0 +1,51 @@
+<h1>Tasks</h1>
+
+<table class="table table-striped">
+  <thead class="thead-default">
+    <tr>
+      <th>id</th>
+      <th>Business process</th>
+      <th>Executed</th>
+      <th>Route</th>
+      <th>Route point</th>
+      <th>Performer</th>
+      <th>Executer</th>
+      <th>Execution date</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <% if !task.executed then %>
+        <tr class="table-danger">
+      <% else %>
+        <tr>
+      <% end %>
+        <td><%= task.id %></td>
+        <td><%= if task.business_process_id then truncate(strip_tags(BusinessProcess.find_by(id: task.business_process_id).description),
+               length: 80) end %></td>
+        <td><%= task.executed ? "Yes" : "No" %></td>
+        <td><%= Route.find_by(id: task.route_id).title %></td>
+        <td><%= RoutePoint.find_by(id: task.route_point_id).title %></td>
+        <td><%= if task.performer_id then User.find_by(id: task.performer_id).name end %></td>
+        <td><%= if task.executor_id then User.find_by(id: task.executor_id).name end %></td>
+        <td><%= if (task.executed && task.execution_date) then task.execution_date.to_formatted_s(:long_ordinal) else "Not executed" end %></td>
+        <td><%= truncate(strip_tags(task.comment),
+               length: 80) %></td>
+        <td>
+          <%= link_to 'Show', task %></br>
+          <%= link_to 'Edit', edit_task_path(task) %></br>
+          <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= button_to new_task_path, :method => :get, class: "btn btn-success" do %>
+  New Task
+<% end %>
