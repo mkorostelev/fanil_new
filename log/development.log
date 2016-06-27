@@ -2923,3 +2923,1275 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 1307ms (Views: 1304.9ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/tasks" for 127.0.0.1 at 2016-06-27 19:23:46 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 33ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-06-27 19:23:46 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 2], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 1294ms (Views: 1291.5ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2016-06-27 19:23:56 +0300
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2sB6nUHwk/3Ah4Jf69KWBYCQuL/NMj/1vFdCMEM2TiiSepMK6t36jLnxpxgAXlNzB9ROZXLFa+NkdWRV8jZllA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-27 19:23:56 +0300
+Processing by ResumesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-06-27 19:23:56 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Completed 200 OK in 958ms (Views: 956.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-27 19:23:59 +0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC[0m
+  Rendered users/index.html.erb within layouts/application (2.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Completed 200 OK in 1009ms (Views: 1007.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2016-06-27 19:24:01 +0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (20.7ms)
+  Rendered users/new.html.erb within layouts/application (22.2ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Completed 200 OK in 126ms (Views: 113.8ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-06-27 19:24:13 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ff8E2iX8TOixT4Oj+9hGILnaJsZwKNDZpMkx/lTOLUpdRe1NjtElmcg5puQQVINWPp7QHM/fhM986xeb5c4G9g==", "user"=>{"name"=>"test", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"test@test.com", "admin"=>"1"}, "commit"=>"Create User"}
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "password_digest", "email", "created_at", "updated_at", "admin") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "test"], ["password_digest", "$2a$10$hfiCTU95gQ.szR0FQYs6pedvRn/FA4/oCdUq8GfYhgJ8E/aXTLdyK"], ["email", "test@test.com"], ["created_at", 2016-06-27 16:24:13 UTC], ["updated_at", 2016-06-27 16:24:13 UTC], ["admin", true]]
+  [1m[35m (52.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 141ms (ActiveRecord: 54.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-27 19:24:13 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC[0m
+  Rendered users/index.html.erb within layouts/application (3.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Completed 200 OK in 936ms (Views: 934.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/store/index" for 127.0.0.1 at 2016-06-27 19:24:18 +0300
+Processing by StoreController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-06-27 19:24:18 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Completed 200 OK in 908ms (Views: 906.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2016-06-27 19:24:24 +0300
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2qfpghvqg2dQr4hsJiAfilBjTYH5zFX+BsB+Up+/H0bM6OcNU0ddXpFbjkTjYHCeX08hLUkNzSsBKEO30yDcMw==", "name"=>"test", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "test"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 66ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 19:24:24 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (1.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 912ms (Views: 903.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/tmp/doc.pdf" for 127.0.0.1 at 2016-06-27 19:24:30 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/tmp/doc.pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (13.0ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (25.2ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (125.7ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (20.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (34.0ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 19:47:28 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 975ms (Views: 968.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 19:47:30 +0300
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 19:48:01 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 948ms (Views: 942.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 19:48:02 +0300
+Started GET "/assets/doc.pdf" for 127.0.0.1 at 2016-06-27 19:48:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/assets/doc.pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (14.9ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (39.2ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (28.3ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 20:11:35 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 879ms (Views: 875.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 20:11:36 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:37 +0300
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 20:11:58 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (1.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 1004ms (Views: 1000.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:11:59 +0300
+Started GET "/assets/doc.pdf" for 127.0.0.1 at 2016-06-27 20:12:00 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/assets/doc.pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (15.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (38.0ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (27.3ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 20:12:55 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 911ms (Views: 904.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:12:56 +0300
+Started GET "/assets/doc.pdf" for 127.0.0.1 at 2016-06-27 20:12:57 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/assets/doc.pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (21.6ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (50.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.7ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (30.3ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 20:13:07 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 1001ms (Views: 997.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 20:13:08 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:13:09 +0300
+Started GET "/doc.pdf" for 127.0.0.1 at 2016-06-27 20:13:10 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/doc.pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (14.7ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (38.8ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (34.3ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 20:15:30 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 915ms (Views: 909.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:15:31 +0300
+Started GET "/app/assets/doc.pdf" for 127.0.0.1 at 2016-06-27 20:15:32 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets/doc.pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (14.2ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (39.3ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (21.1ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (36.8ms)
+Started GET "/app/assets/" for 127.0.0.1 at 2016-06-27 20:15:38 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (16.6ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.2ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (45.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (31.8ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 20:16:46 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 1037ms (Views: 1033.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:16:47 +0300
+Started GET "/" for 127.0.0.1 at 2016-06-27 20:25:05 +0300
+Processing by ResumesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-06-27 20:25:05 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Completed 200 OK in 7541ms (Views: 7516.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 20:25:13 +0300
+Started GET "/" for 127.0.0.1 at 2016-06-27 20:25:25 +0300
+Processing by ResumesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-06-27 20:25:25 +0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Completed 200 OK in 84ms (Views: 82.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 23:18:35 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (148.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (108.0ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 1436ms (Views: 1183.8ms | ActiveRecord: 149.0ms)
+
+
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:37 +0300
+Started GET "/documentation_(en).pdf" for 127.0.0.1 at 2016-06-27 23:18:41 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/documentation_(en).pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (250.0ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (334.0ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (46.1ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (129.1ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 116ms (Views: 112.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:18:51 +0300
+Started GET "/documentation_(en).pdf" for 127.0.0.1 at 2016-06-27 23:18:53 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/documentation_(en).pdf"):
+  
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.1.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.1.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.1.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.rc1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.rc1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.0.rc1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.0.rc1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.rc1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.rc1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.0.rc1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.rc1) lib/rails/engine.rb:522:in `call'
+puma (3.4.0) lib/puma/configuration.rb:224:in `call'
+puma (3.4.0) lib/puma/server.rb:569:in `handle_request'
+puma (3.4.0) lib/puma/server.rb:406:in `process_client'
+puma (3.4.0) lib/puma/server.rb:271:in `block in run'
+puma (3.4.0) lib/puma/thread_pool.rb:114:in `block in spawn_thread'
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [64 times] (12.3ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (0.9ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (37.1ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.1ms)
+  Rendering /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/maks/.rvm/gems/ruby-2.3.0/gems/web-console-3.1.1/lib/web_console/templates/index.html.erb (26.1ms)
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (1.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 77ms (Views: 71.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:19:34 +0300
+Started GET "/admin" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Processing by AdminController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."performer_id" = $1 AND "tasks"."executed" = $2[0m  [["performer_id", 1], ["executed", false]]
+  Rendering admin/index.html.erb within layouts/application
+  Rendered admin/index.html.erb within layouts/application (0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 AND "users"."admin" = $2 LIMIT $3[0m  [["id", 1], ["admin", true], ["LIMIT", 1]]
+Completed 200 OK in 135ms (Views: 130.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.self-6868905872100cae373b065b215a2e15cc4f487d5d28f0996fa6f167b1ff2424.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/custom.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/business_processes.self-25c6741888ce711e90341a68002b1e1c4b9f2c4e8e6dac02bb0ea6eaffb61ce3.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/resumes.self-31146763427a648f31dc412af07965c93d1a0bde0d34f6dea3914188078f4285.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/route_points.self-bc491f2b389ee0a8ac370907c3dfa7c016f7b9cfd4281020c6c22bf23da78e85.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/routes.self-f143e13d79b508d5f5b65478e588474540abb4c412e389b2eecef6eae0257045.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/scaffolds.self-dc602fd5e203afb6d42df8519fbe841e6d93894438d0a32a0409443b73833a4b.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/store.self-111b9a28db1cb812f35f3636460b1170895aeb633006e3b4e02d11e93dd251ff.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/tasks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/alert.self-44483afe785e8334f25977de4cc25db3b8ca7ef953e60d2eeda2deeeccfda56e.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/util.self-259befb5ba307350f3ed40e4ff1d27e6268e407ee0da02fd46435784459fc746.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/button.self-9a46ecb8ace47b217ba3ee88c7a8c7572b0ef75e77fff1b4e32ddf00af7fefe4.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/carousel.self-8e572923c87f450d7f38176167d96a27913dac0771100278265523b97f2bb074.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/collapse.self-4f8619d8d3fb252be59e65ef55b5a91dee275861b5d729c7e64f55091266984e.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/dropdown.self-77fbc8160624d6515b5d55fa40e7e7ba8f4ebe526b6007fe5a6bbc4437b46a1e.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/modal.self-83fa21d21f8b68b3389ce5018b81be0ad967d65f1e08e3acd0d5c804e31e64a7.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/scrollspy.self-7474c149d14b6006919c68e8dd36423c169ef1c15b54a701b82e3931831fa434.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/tab.self-7249bd863668fd4b877386598154c53466a77a853ae4d9ee2c45476fa3a361eb.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/popover.self-1b1efcd196ba075b0e9b7962c2a7631c8d7bcc7010e0140ad2c071cb0594a1d9.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap/tooltip.self-ff495cd6932165d4adceb3a8baec7340536f4d26b2fa14cd202e651ccc7f513a.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/business_processes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/documents.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/resumes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/route_points.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/routes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/store.self-819cf990a0c9148fcb1844c453caf30ee5f41f1b53eaad854eacb116ec86ca7d.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/tasks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/application.self-afe802b04eaf1de2ea762489c83c08aa4c4ff3ff13c21566e43cb710683f5abc.js?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/logo-b540df5192555e59a0be9cfe821facf98b0384bd8afdc123e02c09e14c7579ed.png" for 127.0.0.1 at 2016-06-27 23:20:25 +0300
+Started GET "/assets/documents.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-06-27 23:20:25 +0300

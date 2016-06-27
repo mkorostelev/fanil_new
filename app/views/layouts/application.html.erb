@@ -16,9 +16,9 @@
     <div id="side">
       <ul>
         <li><%= link_to 'Home', store_index_path %></li>
-        <li><a href="http://www..../documentation">Documentation</a></li>
-        <li><a href="http://www..../design">Design</a></li>
-        <li><a href="http://www..../screencast">Screencast</a></li>
+        <li>  <%=link_to 'Documentation', root_path << "documentation.pdf" %></li>
+        <li>  <%=link_to 'Design', root_path << "documentation.pdf" %></li>
+        <li>  <%=link_to 'Screencast', root_path << "documentation.pdf" %></li>
         <% if User.count.zero? %>
           <li><%= link_to 'Users', controller: 'users' %></li>
         <% end %>
@@ -38,7 +38,7 @@
         </ul>
         <%= button_to 'Logout', logout_path, method: :delete %>
       <% end %>
-      
+
     </div>
     <div id="main" style = "padding-top:20px;">
       <%= yield %>
