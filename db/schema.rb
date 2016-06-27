@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160604103909) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "business_processes", force: :cascade do |t|
     t.string   "description"
     t.integer  "author_id"
