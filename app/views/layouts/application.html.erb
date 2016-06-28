@@ -18,7 +18,7 @@
         <li><%= link_to 'Home', store_index_path %></li>
         <li>  <%=link_to 'Documentation', root_path << "documentation.pdf" %></li>
         <li>  <%=link_to 'Design', root_path << "documentation.pdf" %></li>
-        <li>  <%=link_to 'Screencast', root_path << "documentation.pdf" %></li>
+        <li>  <%=link_to 'Screencast', "https://youtu.be/XsIKkD4PYMs" %></li>
         <% if User.count.zero? %>
           <li><%= link_to 'Users', controller: 'users' %></li>
         <% end %>
